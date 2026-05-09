@@ -15,44 +15,53 @@ import { arrayData } from "@/data/arrayData";
 import TablePagination from "@mui/material/TablePagination";
 import { useState } from "react";
 import { randomQuestion } from "@/data/randomData";
+import { useAuth } from "@/context/AuthContext";
+import { CheckCircle2 } from "lucide-react";
 
 export default function Problems() {
   const router = useRouter();
+  const { userData, updateUserProfile } = useAuth();
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#ebe6ff",
-      color: theme.palette.common.black,
+      backgroundColor: "rgba(31, 41, 55, 0.5)",
+      color: "#fff",
       fontWeight: 600,
       fontSize: 15,
-      //   fontFamily: "ui-sans-serif",
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
-      border: 0,
+      borderBottom: "1px solid rgba(55, 65, 81, 0.5)",
+      color: "#d1d5db",
     },
   }));
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
-      //   backgroundColor: theme.palette.action.hover,
+      backgroundColor: "rgba(17, 24, 39, 0.5)",
     },
-    // hide last border
+    "&:hover": {
+      backgroundColor: "rgba(124, 58, 237, 0.1)",
+    },
     "&:last-child td, &:last-child th": {
-      //   border: 0,
+      border: 0,
     },
   }));
 
   return (
-    <>
+    <div className="min-h-screen bg-[#0f1117] text-white selection:bg-primary/30">
       <Header />
-      <div className="pt-32 text-gray-600 dark:text-gray-300" id="testimonials">
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-600/10 blur-[120px]" />
+      </div>
+      <div className="relative z-10 pt-32 pb-20" id="testimonials">
         <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
           <div className="text-2xl font-bold font-sans text-violet-600 mb-7">
             Topic Based Questions
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div
-              className="group relative bg-white dark:bg-gray-800 border-2  border-violet-100 rounded-2xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/10 cursor-pointer"
+              className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer"
               onClick={() => router.push("/problems/array")}
             >
               <div className="relative space-y-8 py-12 p-8">
@@ -83,7 +92,7 @@ export default function Problems() {
                 </Link>
               </div>
             </div>
-            <div className="group relative bg-white dark:bg-gray-800 border-2 border-violet-100 rounded-2xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/10 cursor-pointer">
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer" onClick={() => router.push("/problems/backtracking")}>
               <div className="relative space-y-8 py-12 p-8">
                 <div className="space-y-2">
                   <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
@@ -91,7 +100,7 @@ export default function Problems() {
                   </h5>
                 </div>
                 <Link
-                  href="#"
+                  href="/problems/backtracking"
                   className="flex items-center justify-between group-hover:text-secondary"
                 >
                   <span className="text-sm font-sans">Solve </span>
@@ -110,15 +119,15 @@ export default function Problems() {
                 </Link>
               </div>
             </div>
-            <div className="group relative bg-white dark:bg-gray-800 border-2 border-violet-100 rounded-2xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/10 cursor-pointer">
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer" onClick={() => router.push("/problems/dynamic-programming")}>
               <div className="relative space-y-8 py-12 p-8">
                 <div className="space-y-2">
                   <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
-                    Dynamic Programing
+                    Dynamic Programming
                   </h5>
                 </div>
                 <Link
-                  href="#"
+                  href="/problems/dynamic-programming"
                   className="flex items-center justify-between group-hover:text-secondary"
                 >
                   <span className="text-sm font-sans">Solve </span>
@@ -137,7 +146,7 @@ export default function Problems() {
                 </Link>
               </div>
             </div>
-            <div className="group relative bg-white dark:bg-gray-800 border-2 border-violet-100 rounded-2xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/10 cursor-pointer">
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer" onClick={() => router.push("/problems/string")}>
               <div className="relative space-y-8 py-12 p-8">
                 <div className="space-y-2">
                   <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
@@ -145,7 +154,7 @@ export default function Problems() {
                   </h5>
                 </div>
                 <Link
-                  href="#"
+                  href="/problems/string"
                   className="flex items-center justify-between group-hover:text-secondary"
                 >
                   <span className="text-sm font-sans">Solve </span>
@@ -164,7 +173,7 @@ export default function Problems() {
                 </Link>
               </div>
             </div>
-            <div className="group relative bg-white dark:bg-gray-800 border-2 border-violet-100 rounded-2xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/10 cursor-pointer">
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer" onClick={() => router.push("/problems/hash-table")}>
               <div className="relative space-y-8 py-12 p-8">
                 <div className="space-y-2">
                   <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
@@ -172,7 +181,7 @@ export default function Problems() {
                   </h5>
                 </div>
                 <Link
-                  href="#"
+                  href="/problems/hash-table"
                   className="flex items-center justify-between group-hover:text-secondary"
                 >
                   <span className="text-sm font-sans">Solve </span>
@@ -191,7 +200,7 @@ export default function Problems() {
                 </Link>
               </div>
             </div>
-            <div className="group relative bg-white dark:bg-gray-800 border-2 border-violet-100 rounded-2xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/10 cursor-pointer">
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer" onClick={() => router.push("/problems/stack")}>
               <div className="relative space-y-8 py-12 p-8">
                 <div className="space-y-2">
                   <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
@@ -199,7 +208,7 @@ export default function Problems() {
                   </h5>
                 </div>
                 <Link
-                  href="#"
+                  href="/problems/stack"
                   className="flex items-center justify-between group-hover:text-secondary"
                 >
                   <span className="text-sm font-sans">Solve </span>
@@ -218,7 +227,7 @@ export default function Problems() {
                 </Link>
               </div>
             </div>
-            <div className="group relative bg-white dark:bg-gray-800 border-2 border-violet-100 rounded-2xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/10 cursor-pointer">
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer" onClick={() => router.push("/problems/tree")}>
               <div className="relative space-y-8 py-12 p-8">
                 <div className="space-y-2">
                   <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
@@ -226,7 +235,7 @@ export default function Problems() {
                   </h5>
                 </div>
                 <Link
-                  href="#"
+                  href="/problems/tree"
                   className="flex items-center justify-between group-hover:text-secondary"
                 >
                   <span className="text-sm font-sans">Solve </span>
@@ -245,11 +254,38 @@ export default function Problems() {
                 </Link>
               </div>
             </div>
-            <div className="group relative bg-white dark:bg-gray-800 border-2 border-violet-100 rounded-2xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/10 cursor-pointer">
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer" onClick={() => router.push("/problems/graph")}>
               <div className="relative space-y-8 py-12 p-8">
                 <div className="space-y-2">
                   <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
                     Graphs
+                  </h5>
+                </div>
+                <Link
+                  href="/problems/graph"
+                  className="flex items-center justify-between group-hover:text-secondary"
+                >
+                  <span className="text-sm font-sans">Solve </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="#5e3aee"
+                    className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer">
+              <div className="relative space-y-8 py-12 p-8">
+                <div className="space-y-2">
+                  <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
+                    Greedy
                   </h5>
                 </div>
                 <Link
@@ -272,11 +308,65 @@ export default function Problems() {
                 </Link>
               </div>
             </div>
-            <div className="group relative bg-white dark:bg-gray-800 border-2 border-violet-100 rounded-2xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/10 cursor-pointer">
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer">
               <div className="relative space-y-8 py-12 p-8">
                 <div className="space-y-2">
                   <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
-                    Greedy
+                    Linked List
+                  </h5>
+                </div>
+                <Link
+                  href="#"
+                  className="flex items-center justify-between group-hover:text-secondary"
+                >
+                  <span className="text-sm font-sans">Solve </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="#5e3aee"
+                    className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer">
+              <div className="relative space-y-8 py-12 p-8">
+                <div className="space-y-2">
+                  <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
+                    Two Pointers
+                  </h5>
+                </div>
+                <Link
+                  href="#"
+                  className="flex items-center justify-between group-hover:text-secondary"
+                >
+                  <span className="text-sm font-sans">Solve </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="#5e3aee"
+                    className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+            <div className="group relative bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl transition hover:z-[1] hover:shadow-2xl hover:shadow-violet-600/20 cursor-pointer">
+              <div className="relative space-y-8 py-12 p-8">
+                <div className="space-y-2">
+                  <h5 className="text-xl font-sans font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
+                    Binary Search
                   </h5>
                 </div>
                 <Link
@@ -305,7 +395,8 @@ export default function Problems() {
           </div>
           <TableContainer
             component={Paper}
-            className="lg:w-8/12 lg:mx-auto mt-14 border-0 flex justify-center item-center"
+            className="lg:w-8/12 lg:mx-auto mt-14 border border-gray-700/50 rounded-3xl overflow-hidden bg-gray-800/40 backdrop-blur-xl shadow-2xl flex justify-center item-center"
+            sx={{ backgroundColor: "transparent", backgroundImage: "none", boxShadow: "none" }}
           >
             <Table sx={{ minWidth: 400 }} aria-label="customized table">
               <TableHead>
@@ -314,7 +405,7 @@ export default function Problems() {
                   <StyledTableCell align="left">Title</StyledTableCell>
                   <StyledTableCell align="left">Acceptance</StyledTableCell>
                   <StyledTableCell align="left">Difficulty</StyledTableCell>
-                  {/* <StyledTableCell align="left">Status</StyledTableCell> */}
+                  <StyledTableCell align="center">Status</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -339,22 +430,44 @@ export default function Problems() {
                     <StyledTableCell align="">{row.acRate}</StyledTableCell>
                     <StyledTableCell align="center">
                       {row.difficulty === "Easy" ? (
-                        <div className="pl-3 pr-3 font-semibold	 pt-1 pb-1 w-fit bg-green-100 text-green-500 text-xs rounded-2xl">
+                        <div className="px-3 py-1 w-fit bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-emerald-500/20">
                           Easy
                         </div>
                       ) : row.difficulty === "Hard" ? (
-                        <div className="pl-3 pr-3 font-semibold pt-1 pb-1 w-fit bg-red-100 text-red-500 text-xs rounded-2xl">
+                        <div className="px-3 py-1 w-fit bg-rose-500/10 text-rose-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-rose-500/20">
                           Hard
                         </div>
                       ) : (
-                        <div className="pl-3 pr-3  font-semibold pt-1 pb-1 w-fit bg-yellow-100 text-yellow-500 text-xs rounded-2xl">
+                        <div className="px-3 py-1 w-fit bg-amber-500/10 text-amber-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-amber-500/20">
                           Medium
                         </div>
                       )}
                     </StyledTableCell>
-                    {/* <StyledTableCell align="center">
-                      <input type="checkbox" className="" />
-                    </StyledTableCell> */}
+                    <StyledTableCell align="center">
+                      <input 
+                        type="checkbox" 
+                        className="w-4 h-4 rounded border-gray-700 bg-gray-900/50 text-violet-600 focus:ring-violet-500"
+                        checked={userData?.solvedProblems?.some(p => (typeof p === 'string' ? p : p.titleSlug) === row.titleSlug)}
+                        onChange={async (e) => {
+                          const isChecked = e.target.checked;
+                          const currentSolved = userData?.solvedProblems || [];
+                          let newSolved;
+                          if (isChecked) {
+                            const solveEntry = {
+                              titleSlug: row.titleSlug,
+                              title: row.title,
+                              solvedAt: new Date().toISOString(),
+                              difficulty: row.difficulty,
+                              topic: row.topicTags?.[0]?.name || "General"
+                            };
+                            newSolved = [...currentSolved, solveEntry];
+                          } else {
+                            newSolved = currentSolved.filter(p => p.titleSlug !== row.titleSlug);
+                          }
+                          await updateUserProfile({ solvedProblems: newSolved });
+                        }}
+                      />
+                    </StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
@@ -373,6 +486,6 @@ export default function Problems() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

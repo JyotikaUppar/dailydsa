@@ -7,7 +7,7 @@ import Client6 from "../images/clients/airbnb.svg";
 
 export default function HeroSection() {
   return (
-    <div className="relative" id="home">
+    <div className="relative overflow-hidden" id="home">
       <div
         aria-hidden="true"
         className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
@@ -32,7 +32,7 @@ export default function HeroSection() {
                 href="#"
                 className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
               >
-                <span className="relative font-sans text-lg font-bold	 pl-6 pr-6 pb-3 pt-3 rounded-lg bg-violet-50 text-violet-600">
+                <span className="relative font-sans text-lg font-bold pl-6 pr-6 pb-3 pt-3 rounded-lg bg-violet-50 text-violet-600">
                   Get Started
                 </span>
               </a>

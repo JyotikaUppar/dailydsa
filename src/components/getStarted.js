@@ -6,7 +6,7 @@ import Avatar5 from "../images/avatars/avatar-4.webp";
 
 export default function GetStarted() {
   return (
-    <div className="relative py-16">
+    <div className="relative overflow-hidden py-16">
       <div
         aria-hidden="true"
         className="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
@@ -60,7 +60,7 @@ export default function GetStarted() {
                 href="#"
                 className="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
               >
-                <span className="relative text-lg	 font-bold pl-6 pr-6 pb-3 pt-3 rounded-lg bg-violet-50  text-violet-600 mt-40">
+                <span className="relative text-lg font-bold pl-6 pr-6 pb-3 pt-3 rounded-lg bg-violet-50  text-violet-600 mt-40">
                   Get Started
                 </span>
               </a>
